@@ -20,8 +20,10 @@
   },
   "homepage": "https://github.com/Refiqi/Prospace-company#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
+    "method-override": "^3.0.0",
     "mongoose": "^5.4.1"
   },
   "devDependencies": {

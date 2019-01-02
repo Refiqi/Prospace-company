@@ -5,35 +5,32 @@
                 <div class="card-body">
                     <h3 class="card-title">Create Company</h3>
 
-                    <form action="/create" method="POST">
+                    <form action="/company" method="POST">
 
                         <div class="form-group">
-                            <label for="">Name:</label><br>
-                            <input type="text" name="" id="" class="form-control" placeholder="name">
+
+                            <label for="companyName">Name:</label>
+                            <input required type="text" name="companyName" id="companyName" class="form-control"
+                                placeholder="Enter Title">
+
                         </div>
 
                         <div class="form-group">
                             <label for="">Address:</label><br>
-                            <input type="text" name="" id="" class="form-control" placeholder="address">
+                            <input type="text" name="address" id="address" class="form-control" placeholder="address">
                         </div>
 
                         <div class="form-group">
                             <label for="">Revenue:</label><br>
-                            <input type="text" name="" id="" class="form-control" placeholder="address">
+                            <input type="text" name="revenue" id="revenue" class="form-control" placeholder="revenue">
                         </div>
 
                         <label>Phone No:</label>
-                        <div class="form-row">
-
-                            <div class="form-group col-md-4">
-                              <input type="text" name="code" id="code" class="form-control" placeholder="code">
-                            </div>
-                            
-                            <div class="form-group col-md-8">
-                              <input type="text" name="number" id="number" class="form-control" placeholder="number">
-                            </div>
+                        <div class="form-group">
+                            <input id="phone" name="phone" type="tel" class="form-control">
                         </div>
 
+                        <button type="submit" class="btn btn-primary btn-block">Create</button>
 
                     </form>
 
@@ -46,22 +43,22 @@
                 <div class="card-body">
                     <h3 class="card-title">Create Offices</h3>
 
-                    <form action="/create" method="POST">
+                    <form action="/office" method="POST">
 
                         <div class="form-group">
-                            <label for="">Name:</label><br>
-                            <input type="text" name="" id="" class="form-control" placeholder="name">
+                            <label for="name">Name:</label><br>
+                            <input type="text" name="officeName" id="officeName" class="form-control" placeholder="name">
                         </div>
 
                         <label>Location:</label>
                         <div class="form-row">
 
                             <div class="form-group col-md-6">
-                              <input type="text" name="latitude" id="latitude" class="form-control" placeholder="latitude">
+                                <input type="text" name="latitude" id="latitude" class="form-control" placeholder="latitude">
                             </div>
-                            
+
                             <div class="form-group col-md-6">
-                              <input type="text" name="longitude" id="longitude" class="form-control" placeholder="longitude">
+                                <input type="text" name="longitude" id="longitude" class="form-control" placeholder="longitude">
                             </div>
                         </div>
 
@@ -72,14 +69,50 @@
 
                         <div class="form-group">
                             <label for="">Company:</label><br>
-                            <input type="text" name="" id="" class="form-control" placeholder="Company">
+                            <input type="text" name="company" id="company" class="form-control" placeholder="Company">
                         </div>
 
+                        <button type="submit" class="btn btn-primary btn-block">Create</button>
 
                     </form>
 
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <h2>Companies</h2>
+    <div class="row">
+                    {{#each companies}}
+
+        <div class="col-md-6">
+            <div class="card-deck">
+                <div class="card">
+
+                    <div class="card-body">
+                        <form action="/{{id}}" method="POST">
+                            <button class="close" type="submit" aria-label="Close">
+                                <span aria-hidden="true">X</span>
+                            </button>
+                        </form>
+                        <h4 class="card-title">{{name}}</h4>
+                        <hr>
+                        <label for="address">Address:</label>
+                        <p>{{address}}</p>
+                        <label for="revenue">Revenue:</label>
+                        <p>{{revenue}}</p>
+                        <label for="phone">Phone:</label>
+                        <p>{{phone}}</p>
+
+                        <hr>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+                            {{/each}}
+
     </div>
 </div>
