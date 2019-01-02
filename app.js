@@ -25,8 +25,6 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
-
-
 // Server Nodejs
 
 app.listen(port, (err)=>{
