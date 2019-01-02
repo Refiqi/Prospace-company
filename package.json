@@ -1,0 +1,29 @@
+{
+  "name": "prospace-company",
+  "version": "1.0.0",
+  "description": "Nodejs Web app for managing the company and corresponding offices",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Refiqi/Prospace-company.git"
+  },
+  "keywords": [
+    "NodeJS"
+  ],
+  "author": "Refiqi Muhamad Fadila",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Refiqi/Prospace-company/issues"
+  },
+  "homepage": "https://github.com/Refiqi/Prospace-company#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
