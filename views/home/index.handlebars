@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container-card">
     <div class="row">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title">Create Company</h3>
+                    <h3 class="card-title">Create Company</h3><hr>
 
                     <form action="/company" method="POST">
 
@@ -17,17 +17,17 @@
 
                         <div class="form-group">
                             <label for="">Address:</label><br>
-                            <input type="text" name="address" id="address" class="form-control" placeholder="address">
+                            <input required type="text" name="address" id="address" class="form-control" placeholder="address">
                         </div>
 
                         <div class="form-group">
                             <label for="">Revenue:</label><br>
-                            <input type="text" name="revenue" id="revenue" class="form-control" placeholder="revenue">
+                            <input required type="text" name="revenue" id="revenue" class="form-control" placeholder="revenue">
                         </div>
 
                         <label>Phone No:</label>
                         <div class="form-group">
-                            <input id="phone" name="phone" type="tel" class="form-control">
+                            <input required id="phone" name="phone" type="tel" class="form-control">
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-block">Create</button>
@@ -41,7 +41,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title">Create Offices</h3>
+                    <h3 class="card-title">Create Offices</h3><hr>
 
                     <form action="/office" method="POST">
 
@@ -82,10 +82,16 @@
     </div>
 </div>
 <hr>
-<div class="container">
+<div class="container-card">
     <h2>Companies</h2>
     <div class="row">
-                    {{#each companies}}
+
+    {{#isEmpty companies.length 0}}
+        <div class="container" style="text-align:center">
+            <h3>there is no companies created yet, Please enter a new Company</h3>
+        </div>
+    {{else}}
+        {{#each companies}}
 
         <div class="col-md-6">
             <div class="card-deck">
@@ -112,7 +118,7 @@
                 </div>
             </div>
         </div>
-                            {{/each}}
-
+        {{/each}}
+    {{/isEmpty}}
     </div>
 </div>

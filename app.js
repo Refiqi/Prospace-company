@@ -43,9 +43,12 @@ app.use(methodOverride('_method'));
 // Set Template Engine
 
 const exphbs = require('express-handlebars');
+const {isEmpty} = require('./helpers/handlebars-helpers');
+
 
 app.engine('handlebars', exphbs({
-    defaultLayout: 'home'
+    defaultLayout: 'home',
+    helpers: {isEmpty: isEmpty}
 }));
 app.set('view engine', 'handlebars');
 
