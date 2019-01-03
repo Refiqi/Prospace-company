@@ -1,6 +1,6 @@
 <div class="container-card">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 md-6">
             <div class="card-deck">
                 <div class="card">
 
@@ -28,31 +28,35 @@
 
 <div class="container-card">
     <div class="row">
-    {{#each offices}}
-    <div class="col-md-6">
-        <div class="card-deck">
-            <div class="card">
-                <div class="card-body">
-                    <form action="/{{offices.id}}" method="POST">
-                        <button class="close" type="submit" aria-label="Close">
-                            <span aria-hidden="true">X</span>
-                        </button>
-                    </form>
-                    <h3 class="card-title">{{name}}</h3>
-                    <hr>
-                    <label for="location">Location:</label>
-                    <p>Lat - {{latitude}}</p>
-                    <p>Log - {{longitude}}</p>
-                    <label for="date">Office Start Date:</label>
-                    <p>{{date}}</p>
 
-                    <hr>
-                </div>
-
-            </div>
+        {{#isEmpty offices.length 0}}
+        <div class="container" style="text-align:center">
+            <h3>there is no office created yet, Please create a new Office</h3>
         </div>
-    </div>
+        {{else}}
+            {{#each offices}}
+                <div class="col-md-6">
+                    <div class="card-deck">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="/office/{{id}}?_method=DELETE" method="POST">
+                                    <button class="close" type="submit" aria-label="Close">
+                                        <span aria-hidden="true">X</span>
+                                    </button>
+                                </form>
+                                <h3 class="card-title">{{name}}</h3>
+                                <hr>
+                                <label for="location">Location:</label>
+                                <p>Lat - {{latitude}}</p>
+                                <p>Log - {{longitude}}</p>
+                                <label for="date">Office Start Date:</label>
+                                <p>{{date}}</p>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         {{/each}}
-
+    {{/isEmpty}}
     </div>
 </div>

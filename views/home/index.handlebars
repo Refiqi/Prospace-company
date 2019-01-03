@@ -47,24 +47,24 @@
 
                         <div class="form-group">
                             <label for="name">Name:</label><br>
-                            <input type="text" name="officeName" id="officeName" class="form-control" placeholder="name">
+                            <input required type="text" name="officeName" id="officeName" class="form-control" placeholder="name">
                         </div>
 
                         <label>Location:</label>
                         <div class="form-row">
 
                             <div class="form-group col-md-6">
-                                <input type="text" name="latitude" id="latitude" class="form-control" placeholder="latitude">
+                                <input required type="text" name="latitude" id="latitude" class="form-control" placeholder="latitude">
                             </div>
 
                             <div class="form-group col-md-6">
-                                <input type="text" name="longitude" id="longitude" class="form-control" placeholder="longitude">
+                                <input required type="text" name="longitude" id="longitude" class="form-control" placeholder="longitude">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="">Date:</label><br>
-                            <input type="date" name="date" id="date" class="form-control">
+                            <input required type="date" name="date" id="date" class="form-control">
                         </div>
 
                         <div class="form-group">
@@ -102,7 +102,7 @@
                 <div class="card">
 
                     <div class="card-body">
-                        <form action="/{{id}}" method="POST">
+                        <form action="/company/{{id}}" method="POST">
                             <button class="close" type="submit" aria-label="Close">
                                 <span aria-hidden="true">X</span>
                             </button>
