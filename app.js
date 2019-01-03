@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const session = require('express-session');
+const flash = require('connect-flash');
 const port = process.env.PORT || 5000;
 
 // Body-parser
@@ -15,6 +17,24 @@ app.use(bodyParser.urlencoded({extended: true}));
 const methodOverride = require('method-override');
 
 app.use(methodOverride('_method'));
+
+// Session and Flash
+app.use(session({
+    secret: 'refiqi',
+    resave: true,
+    saveUninitialized: true
+}));
+
+app.use(flash());
+
+// Creating Local Variables with middleware
+app.use((req, res, next)=>{
+
+    res.locals.success_message = req.flash('success_message');
+    res.locals.errors_message = req.flash('errors_message');
+
+    next();
+});
 
 // Database
 
@@ -59,6 +79,8 @@ app.engine('handlebars', exphbs({
     helpers: {isEmpty: isEmpty}
 }));
 app.set('view engine', 'handlebars');
+
+
 
 // Server Nodejs
 

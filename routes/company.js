@@ -20,11 +20,12 @@ router.post('/create', (req, res)=>{
     });
 
     newCompany.save().then(savedCompany=>{
+
+        req.flash('success_message', `Company ${savedCompany.name} has been Created`);
         res.redirect('/');
     }).catch(err=>{
         if (err) throw err;
     });
-
 });
 
 router.get('/:id', (req, res) => {
@@ -45,6 +46,7 @@ router.delete('/:id', (req, res)=>{
 
     Company.findOneAndDelete({_id: req.params.id})
     .then(company=>{
+        req.flash('success_message', `Company ${company.name} has been Deleted`);
         res.redirect('/');
     }).catch(err=>{
         if (err) throw err;
