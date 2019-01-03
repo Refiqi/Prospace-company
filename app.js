@@ -45,6 +45,7 @@ app.use('/company', company);
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/company', express.static('public'));
+app.use('/office', express.static('public'));
 
 
 // Set Template Engine

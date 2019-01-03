@@ -20,35 +20,4 @@ router.get('/', (req, res)=>{
 
 });
 
-router.post('/company', (req, res)=>{
-
-    const newCompany = new Company({
-
-        name: req.body.companyName,
-        address: req.body.address,
-        revenue: req.body.revenue,
-        phone: req.body.phone
-
-    });
-
-    newCompany.save().then(savedCompany=>{
-        res.redirect('/');
-    }).catch(err=>{
-        if (err) throw err;
-    });
-
-});
-
-router.post('/:id', (req, res)=>{
-
-    Company.findOneAndDelete({_id: req.params.id})
-    .then(company=>{
-        res.redirect('/');
-    }).catch(err=>{
-        if (err) throw err;
-    });
-
-});
-
-
 module.exports = router;

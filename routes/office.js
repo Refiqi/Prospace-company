@@ -29,7 +29,7 @@ router.get('/create', (req, res)=>{
 });
 
 router.delete('/:id', (req, res)=>{
-    Office.findOneAndDelete({_id: req.params.id}).then(companies=>{
+    Office.findOneAndDelete({_id: req.params.id}).then(offices=>{
         res.redirect('/');
     });
 });
