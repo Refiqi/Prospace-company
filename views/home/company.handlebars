@@ -1,0 +1,54 @@
+<div class="container-card">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-deck">
+                <div class="card">
+
+                    <div class="card-body">
+                        <h4 class="card-title">{{companies.name}}</a></h4>
+                        <hr>
+                        <label for="address"><strong>Address:</strong></label>
+                        <p>{{companies.address}}</p>
+                        <label for="revenue"><strong>Revenue:</strong></label>
+                        <p>{{companies.revenue}}</p>
+                        <label for="phone"><strong>Phone no:</strong></label>
+                        <p>{{companies.phone}}</p>
+                        <div class="btn-holder">
+                            <a href="/" class="btn btn-secondary" >Back to Overview</a href="/">
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="container-card">
+        <div class="col-md-6">
+            <div class="card-deck">
+                <div class="card">
+
+                    <div class="card-body">
+                        <form action="/{{id}}" method="POST">
+                            <button class="close" type="submit" aria-label="Close">
+                                <span aria-hidden="true">X</span>
+                            </button>
+                        </form>
+                        <h4 class="card-title"><a class="nameComp" href="/company/{{id}}">{{name}}</a></h4>
+                        <hr>
+                        <label for="address">Address:</label>
+                        <p>{{address}}</p>
+                        <label for="revenue">Revenue:</label>
+                        <p>{{revenue}}</p>
+                        <label for="phone">Phone:</label>
+                        <p>{{phone}}</p>
+
+                        <hr>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

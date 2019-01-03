@@ -32,16 +32,19 @@ mongoose.connect(
 
 const main = require('./routes/main');
 const office = require('./routes/office');
+const company = require('./routes/company');
 
 
 // Use Routes
 
 app.use('/', main);
 app.use('/office', office);
+app.use('/company', company);
 
 // Use Style and JS
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/company', express.static('public'));
 
 
 // Set Template Engine

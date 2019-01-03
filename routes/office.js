@@ -9,23 +9,26 @@ router.all('/*', (req, res, next) => {
 });
 
 
-router.get('/', (req, res)=>{
+router.get('/create', (req, res)=>{
 
     const newOffice = new Office({
 
-        name: req.body.name,
+        name: req.body.officeName,
         latitude: req.body.latitude,
         longitude: req.body.longitude,
         date: req.body.date,
         companies: req.body.companies
 
     });
-
-    console.log(newOffice);
-    res.send('itwotk');
     
-
+    newOffice.save().then(savedOffice=>{
+        res.redirect('/');
+    }).catch(err=>{
+        if (err) throw err;
+    });
 });
+
+
 
 
 

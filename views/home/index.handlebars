@@ -43,7 +43,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Create Offices</h3><hr>
 
-                    <form class="officeForm" name="officeForm" id="officeForm" action="/office?_method=get" method="post">
+                    <form class="officeForm" name="officeForm" id="officeForm" action="/office/create?_method=get" method="post">
 
                         <div class="form-group">
                             <label for="name">Name:</label><br>
@@ -107,7 +107,7 @@
                                 <span aria-hidden="true">X</span>
                             </button>
                         </form>
-                        <h4 class="card-title">{{name}}</h4>
+                        <h4 class="card-title"><a class="nameComp" href="/company/{{id}}">{{name}}</a></h4>
                         <hr>
                         <label for="address">Address:</label>
                         <p>{{address}}</p>
