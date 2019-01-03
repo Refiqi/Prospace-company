@@ -9,7 +9,7 @@ router.all('/*', (req, res, next) => {
 });
 
 
-router.get('/create', (req, res)=>{
+router.get('/create', (req, res) => {
 
     const newOffice = new Office({
 
@@ -20,27 +20,33 @@ router.get('/create', (req, res)=>{
         companies: req.body.companies
 
     });
-    
+
     newOffice.save();
 
-        Office.findOne(newOffice).populate('companies').then(office=>{
+    Office.findOne(newOffice)
+    
+    .populate('companies')
+    .then(office => {
 
-            req.flash('success_message', `Office ${office.name} in ${office.companies.name} has been Created`);
+        req.flash('success_message', `Office ${office.name} in ${office.companies.name} has been Created`);
+        res.redirect('/');
+
+    }).catch(err => {
+        if (err) throw err;
+    });
+});
+
+router.delete('/:id', (req, res) => {
+    Office.findOneAndDelete({_id: req.params.id})
+
+        .populate('companies')
+        .then(office => {
+
+            req.flash('success_message', `Office ${office.name} in ${office.companies.name} has been Deleted`);
             res.redirect('/');
-
         }).catch(err=>{
             if (err) throw err;
         });
-});
-
-router.delete('/:id', (req, res)=>{
-    Office.findOneAndDelete({_id: req.params.id})
-    .populate('companies')
-    .then(office=>{
-
-        req.flash('success_message', `Office ${office.name} in ${office.companies.name} has been Deleted`);
-        res.redirect('/');
-    });
 });
 
 

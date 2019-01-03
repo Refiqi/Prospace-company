@@ -9,7 +9,9 @@ const port = process.env.PORT || 5000;
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 
 // Method Override
@@ -28,7 +30,7 @@ app.use(session({
 app.use(flash());
 
 // Creating Local Variables with middleware
-app.use((req, res, next)=>{
+app.use((req, res, next) => {
 
     res.locals.success_message = req.flash('success_message');
     res.locals.errors_message = req.flash('errors_message');
@@ -71,12 +73,16 @@ app.use('/office', express.static('public'));
 // Set Template Engine
 
 const exphbs = require('express-handlebars');
-const {isEmpty} = require('./helpers/handlebars-helpers');
+const {
+    isEmpty
+} = require('./helpers/handlebars-helpers');
 
 
 app.engine('handlebars', exphbs({
     defaultLayout: 'home',
-    helpers: {isEmpty: isEmpty}
+    helpers: {
+        isEmpty: isEmpty
+    }
 }));
 app.set('view engine', 'handlebars');
 

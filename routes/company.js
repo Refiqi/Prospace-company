@@ -8,7 +8,7 @@ router.all('/*', (req, res, next) => {
     next();
 });
 
-router.post('/create', (req, res)=>{
+router.post('/create', (req, res) => {
 
     const newCompany = new Company({
 
@@ -19,38 +19,49 @@ router.post('/create', (req, res)=>{
 
     });
 
-    newCompany.save().then(savedCompany=>{
+    newCompany.save().then(savedCompany => {
 
         req.flash('success_message', `Company ${savedCompany.name} has been Created`);
         res.redirect('/');
-    }).catch(err=>{
+
+    }).catch(err => {
         if (err) throw err;
     });
 });
 
 router.get('/:id', (req, res) => {
 
-    Company.findOne({_id: req.params.id}).then(companies=>{
-        
-        Office.find({companies: req.params.id}).then(offices=>{
-        
-            res.render('home/company', {companies: companies, offices: offices});
+    Company.findOne({_id: req.params.id})
+    
+    .then(companies => {
 
-        }).catch(err=>{
+        Office.find({companies: req.params.id})
+
+        .then(offices => {
+
+            res.render('home/company', {
+                companies: companies,
+                offices: offices
+            });
+
+        }).catch(err => {
             if (err) throw err;
         });
     });
 });
 
-router.delete('/:id', (req, res)=>{
+router.delete('/:id', (req, res) => {
 
     Company.findOneAndDelete({_id: req.params.id})
-    .then(company=>{
-        req.flash('success_message', `Company ${company.name} has been Deleted`);
-        res.redirect('/');
-    }).catch(err=>{
-        if (err) throw err;
-    });
+        
+        .then(company => {
+
+            req.flash('success_message', `Company ${company.name} has been Deleted`);
+            res.redirect('/');
+            
+        }).catch(err => {
+            if (err) throw err;
+        });
 
 });
 
