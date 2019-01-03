@@ -1,0 +1,45 @@
+{{#each companies}}
+
+<div class="modal fade" id="deleteCompany" tabindex="-1" role="dialog" aria-labelledby="deleteCompanyLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteCompanyLabel">Are you Sure?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Delete" below if you really want to delete it.</div>
+          <div class="modal-footer">
+              <form action="/company/{{id}}?_method=DELETE" method="post">
+                <button class="btn btn-danger" type="submit">Delete</button>
+              </form>
+          </div>
+        </div>
+    </div>
+</div>
+
+{{/each}}
+
+{{#each offices}}
+
+<div class="modal fade" id="deleteOffice" tabindex="-1" role="dialog" aria-labelledby="deleteOfficeLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteOfficeLabel">Are you Sure?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Delete" below if you really want to delete it.</div>
+          <div class="modal-footer">
+              <form action="/office/{{id}}?_method=DELETE" method="post">
+                <button class="btn btn-danger" type="submit">Delete</button>
+              </form>
+          </div>
+        </div>
+    </div>
+</div>
+
+{{/each}}
