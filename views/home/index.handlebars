@@ -5,7 +5,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Create Company</h3><hr>
 
-                    <form action="/company" method="POST">
+                    <form class="companyForm" id="companyForm" name="companyForm" action="/company" method="POST">
 
                         <div class="form-group">
 
@@ -30,7 +30,7 @@
                             <input required id="phone" name="phone" type="tel" class="form-control">
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-block">Create</button>
+                        <button type="submit" class="btn btn-primary btn-block companyButton" name="companyButton" id="companyButton">Create</button>
 
                     </form>
 
@@ -43,7 +43,7 @@
                 <div class="card-body">
                     <h3 class="card-title">Create Offices</h3><hr>
 
-                    <form action="/office" method="POST">
+                    <form class="officeForm" name="officeForm" id="officeForm" action="/office?_method=get" method="post">
 
                         <div class="form-group">
                             <label for="name">Name:</label><br>
@@ -69,10 +69,14 @@
 
                         <div class="form-group">
                             <label for="">Company:</label><br>
-                            <input type="text" name="company" id="company" class="form-control" placeholder="Company">
+                                <select class="form-control" name="companies" id="companies">
+                                {{#each companies}}
+                                    <option value="{{id}}">{{name}}</option>
+                                {{/each}}
+                                </select>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-block">Create</button>
+                        <button type="submit" class="btn btn-primary btn-block officeButton" name="officeButton" id="officeButton">Create</button>
 
                     </form>
 

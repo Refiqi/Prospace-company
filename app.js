@@ -3,6 +3,19 @@ const app = express();
 const path = require('path');
 const port = process.env.PORT || 5000;
 
+// Body-parser
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
+
+// Method Override
+
+const methodOverride = require('method-override');
+
+app.use(methodOverride('_method'));
+
 // Database
 
 const mongoose = require('mongoose');
@@ -14,31 +27,22 @@ mongoose.connect(
         console.log('Connected to MongoDB');
     });
 
-// Body-parser
-
-const bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-
 
 // Load Routes
 
 const main = require('./routes/main');
+const office = require('./routes/office');
 
 
 // Use Routes
 
 app.use('/', main);
+app.use('/office', office);
 
 // Use Style and JS
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Method Override
-
-const methodOverride = require('method-override');
-
-app.use(methodOverride('_method'));
 
 // Set Template Engine
 
