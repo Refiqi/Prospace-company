@@ -14,7 +14,7 @@
                         <label for="phone"><strong>Phone no:</strong></label>
                         <p>{{companies.phone}}</p>
                         <div class="btn-holder">
-                            <a href="/" class="btn btn-secondary" >Back to Overview</a href="/">
+                            <a href="/" class="btn btn-secondary">Back to Overview</a href="/">
                         </div>
                         <hr>
                     </div>
@@ -23,32 +23,36 @@
         </div>
     </div>
 </div>
+
 <hr>
+
 <div class="container-card">
-        <div class="col-md-6">
-            <div class="card-deck">
-                <div class="card">
+    <div class="row">
+    {{#each offices}}
+    <div class="col-md-6">
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/{{offices.id}}" method="POST">
+                        <button class="close" type="submit" aria-label="Close">
+                            <span aria-hidden="true">X</span>
+                        </button>
+                    </form>
+                    <h3 class="card-title">{{name}}</h3>
+                    <hr>
+                    <label for="location">Location:</label>
+                    <p>Lat - {{latitude}}</p>
+                    <p>Log - {{longitude}}</p>
+                    <label for="date">Office Start Date:</label>
+                    <p>{{date}}</p>
 
-                    <div class="card-body">
-                        <form action="/{{id}}" method="POST">
-                            <button class="close" type="submit" aria-label="Close">
-                                <span aria-hidden="true">X</span>
-                            </button>
-                        </form>
-                        <h4 class="card-title"><a class="nameComp" href="/company/{{id}}">{{name}}</a></h4>
-                        <hr>
-                        <label for="address">Address:</label>
-                        <p>{{address}}</p>
-                        <label for="revenue">Revenue:</label>
-                        <p>{{revenue}}</p>
-                        <label for="phone">Phone:</label>
-                        <p>{{phone}}</p>
-
-                        <hr>
-                    </div>
-
+                    <hr>
                 </div>
+
             </div>
         </div>
+    </div>
+        {{/each}}
+
     </div>
 </div>

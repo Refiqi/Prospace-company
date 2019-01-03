@@ -11,10 +11,6 @@ body {
 .container-card {
   padding-bottom: 20px;
   padding-top: 30px;
-  justify-content: space-between;
-  flex-direction: column;
-  height: 100vh;
-  display: flex;
 }
 
 

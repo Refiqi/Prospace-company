@@ -30,14 +30,14 @@ mongoose.connect(
 
 // Load Routes
 
-const main = require('./routes/main');
+const overview = require('./routes/overview');
 const office = require('./routes/office');
 const company = require('./routes/company');
 
 
 // Use Routes
 
-app.use('/', main);
+app.use('/', overview);
 app.use('/office', office);
 app.use('/company', company);
 
