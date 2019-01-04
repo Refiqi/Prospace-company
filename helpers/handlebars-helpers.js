@@ -1,6 +1,5 @@
 const moment = require('moment');
 
-
 module.exports = {
 
     isEmpty: function(obj, conditional, options){
@@ -9,7 +8,9 @@ module.exports = {
         }
         return options.inverse(this);
     },
+
     generateDate: function(date, format) {
         return moment(date).format(format);
     }
+    
 };

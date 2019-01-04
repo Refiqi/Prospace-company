@@ -12,12 +12,14 @@ router.post('/create', (req, res) => {
 
     let errors = [];
 
-    if (req.body.revenue < 1){
+    if (req.body.revenue < 1) {
+
         errors.push({
             message: "Please enter a positive number in Revenue"
         });
     }
-    if (req.body.phone < 1){
+    if (req.body.phone < 1) {
+
         errors.push({
             message: "Please enter a valid and positive number in Phone"
         });
@@ -25,7 +27,7 @@ router.post('/create', (req, res) => {
 
     if (errors.length > 0) {
 
-        Company.find({}).then(companies=>{
+        Company.find({}).then(companies => {
 
             res.render('home/index', {
                 errors: errors,
@@ -39,55 +41,62 @@ router.post('/create', (req, res) => {
         });
     } else {
 
-    const newCompany = new Company({
+        const newCompany = new Company({
 
-        name: req.body.companyName,
-        address: req.body.address,
-        revenue: req.body.revenue,
-        phone: req.body.phone
+            name: req.body.companyName,
+            address: req.body.address,
+            revenue: req.body.revenue,
+            phone: req.body.phone
 
-    });
+        });
 
-    newCompany.save().then(savedCompany => {
-        req.flash('success_message', `Company ${savedCompany.name} has been Created`);
-        res.redirect('/');
+        newCompany.save().then(savedCompany => {
+            
+            req.flash('success_message', `Company ${savedCompany.name} has been Created`);
+            res.redirect('/');
 
-    }).catch(err => {
-        if (err) throw err;
-    });
+        }).catch(err => {
+            if (err) throw err;
+        });
     }
 });
 
 router.get('/:id', (req, res) => {
 
-    Company.findOne({_id: req.params.id})
-    
-    .then(companies => {
+    Company.findOne({
+            _id: req.params.id
+        })
 
-        Office.find({companies: req.params.id})
+        .then(companies => {
 
-        .then(offices => {
+            Office.find({
+                    companies: req.params.id
+                })
 
-            res.render('home/company', {
-                companies: companies,
-                offices: offices
-            });
+                .then(offices => {
 
-        }).catch(err => {
-            if (err) throw err;
+                    res.render('home/company', {
+                        companies: companies,
+                        offices: offices
+                    });
+
+                }).catch(err => {
+                    if (err) throw err;
+                });
         });
-    });
 });
 
 router.delete('/:id', (req, res) => {
 
-    Company.findOneAndDelete({_id: req.params.id})
-        
+    Company.findOneAndDelete({
+            _id: req.params.id
+        })
+
         .then(company => {
 
             req.flash('success_message', `Company ${company.name} has been Deleted`);
             res.redirect('/');
-            
+
         }).catch(err => {
             if (err) throw err;
         });

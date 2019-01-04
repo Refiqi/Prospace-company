@@ -29,32 +29,32 @@
 <div class="container-card">
     <div class="row">
 
-        {{#isEmpty offices.length 0}}
+    {{#isEmpty offices.length 0}}
         <div class="container" style="text-align:center">
             <h3>there is no office created yet, Please create a new Office</h3>
             <a href="/" class="btn btn-primary">Create Office</a>
         </div>
-        {{else}}
-            {{#each offices}}
-                <div class="col-md-6">
-                    <div class="card-deck">
-                        <div class="card">
-                            <div class="card-body">
-                                <button class="close" type=+"button" data-toggle="modal" data-target="#deleteOffice">
-                                    <span aria-hidden="true">X</span>
-                                </button>
-                                <h3 class="card-title"><strong>{{name}}</strong></h3>
-                                <hr>
-                                <label for="location"><strong>Location:</strong></label>
-                                <p>Lat - {{latitude}}</p>
-                                <p>Log - {{longitude}}</p>
-                                <label for="date"><strong>Office Start Date:</strong></label>
-                                <p>{{generateDate date 'L'}}</p>
-                                <hr>
-                            </div>
-                        </div>
+    {{else}}
+        {{#each offices}}
+        <div class="col-md-6">
+            <div class="card-deck">
+                <div class="card">
+                    <div class="card-body">
+                        <button class="close" type=+"button" data-toggle="modal" data-target="#deleteOffice">
+                            <span aria-hidden="true">X</span>
+                        </button>
+                        <h3 class="card-title"><strong>{{name}}</strong></h3>
+                        <hr>
+                        <label for="location"><strong>Location:</strong></label>
+                        <p>Lat - {{latitude}}</p>
+                        <p>Log - {{longitude}}</p>
+                        <label for="date"><strong>Office Start Date:</strong></label>
+                        <p>{{generateDate date 'L'}}</p>
+                        <hr>
                     </div>
                 </div>
+            </div>
+        </div>
         {{/each}}
     {{/isEmpty}}
     </div>

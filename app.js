@@ -3,7 +3,6 @@ const app = express();
 const path = require('path');
 const session = require('express-session');
 const flash = require('connect-flash');
-const port = process.env.PORT || 5000;
 
 // Body-parser
 
@@ -74,7 +73,8 @@ app.use('/office', express.static('public'));
 
 const exphbs = require('express-handlebars');
 const {
-    isEmpty, generateDate
+    isEmpty,
+    generateDate
 } = require('./helpers/handlebars-helpers');
 
 
@@ -90,6 +90,8 @@ app.set('view engine', 'handlebars');
 
 
 // Server Nodejs
+// process.env.PORT if the app want to be deployed otherwise localhost:5000
+const port = process.env.PORT || 5000;
 
 app.listen(port, (err) => {
     if (err) throw err;

@@ -8,14 +8,16 @@ router.all('/*', (req, res, next) => {
     next();
 });
 
-router.get('/', (req, res)=>{
+router.get('/', (req, res) => {
 
-    Company.find({}).then(companies=>{
-        
-        res.render('home/index', {companies: companies});
+    Company.find({}).then(companies => {
 
-    }).catch(err=>{
-        if(err) throw err;
+        res.render('home/index', {
+            companies: companies
+        });
+
+    }).catch(err => {
+        if (err) throw err;
     });
 
 });
