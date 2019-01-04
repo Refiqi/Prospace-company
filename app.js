@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const session = require('express-session');
-const flash = require('connect-flash');
+const flash = require('connect-flash'); 
 
 // Body-parser
 
@@ -37,16 +37,29 @@ app.use((req, res, next) => {
     next();
 });
 
-// Database
-
+// Database Remote mLab
+const { mongoDbUrl } = require('./config/database');
 const mongoose = require('mongoose');
-mongoose.connect(
-        'mongodb://localhost:27017/company', {
-            useNewUrlParser: true
-        })
-    .then(db => {
-        console.log('Connected to MongoDB');
-    });
+mongoose.connect(mongoDbUrl, {
+    useNewUrlParser: true
+}).then(db => {
+    console.log('MongoDB Connected');
+}).catch(err => {
+    console.log(err);
+});
+
+
+
+// Database Local Uncomment this and comment DB remote mLab if you want to try this in localhost
+
+// const mongoose = require('mongoose');
+// mongoose.connect(
+//         'mongodb://localhost:27017/company', {
+//             useNewUrlParser: true
+//         })
+//     .then(db => {
+//         console.log('Connected to MongoDB');
+//     });
 
 
 // Load Routes

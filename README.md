@@ -53,7 +53,7 @@ I'm creating the POST routes for inserting the inputted data in forms to the dat
 
 I need a Function that will check if there's data to be displayed in the overview page and office page so i created the isEmpty function, it will check if for example the company data is empty or not. if it is empty then it will return 'there is no company created yet' else it will return the company data.
 
-for the generateDate it's for Beautify the date that will be displayed in office page so that it will be easier to read because the date in The database have too much information to be displayed.
+for the generateDate it's for Beautify the date that will be displayed in office page so that it will be easier to read because the date in The database have too much information to be displayed. im using moment packages because it's clean, easy to customize and easy to use.
 
 ##### Session and Flash message
 
