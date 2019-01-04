@@ -11,6 +11,23 @@ router.all('/*', (req, res, next) => {
 
 router.get('/create', (req, res) => {
 
+    if (req.body.latitude < 1){
+        
+        req.flash('errors_message', 'Please enter a positive number in Latitude');
+
+    }
+    if (req.body.longitude < 1){
+        
+        req.flash('errors_message', 'Please enter a positive number in Longitude');
+
+    }
+
+    if (req.flash.length > 0) {
+        
+        res.redirect('/');
+        
+    } else {
+
     const newOffice = new Office({
 
         name: req.body.officeName,
@@ -38,7 +55,7 @@ router.get('/create', (req, res) => {
     }).catch(err=>{
         if (err) throw err;
     });
-
+    }
 
 });
 

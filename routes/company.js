@@ -10,6 +10,29 @@ router.all('/*', (req, res, next) => {
 
 router.post('/create', (req, res) => {
 
+    let errors = [];
+
+    if (req.body.revenue < 1){
+        errors.push({
+            message: "Please enter a positive number in Revenue"
+        });
+    }
+    if (req.body.phone < 1){
+        errors.push({
+            message: "Please enter a valid and positive number in Phone"
+        });
+    }
+
+    if (errors.length > 0) {
+        res.render('home/index', {
+            errors: errors,
+            companyName: req.body.companyName,
+            address: req.body.address,
+            revenue: req.body.revenue,
+            phone: req.body.phone
+        });
+    } else {
+
     const newCompany = new Company({
 
         name: req.body.companyName,
@@ -20,13 +43,13 @@ router.post('/create', (req, res) => {
     });
 
     newCompany.save().then(savedCompany => {
-
         req.flash('success_message', `Company ${savedCompany.name} has been Created`);
         res.redirect('/');
 
     }).catch(err => {
         if (err) throw err;
     });
+    }
 });
 
 router.get('/:id', (req, res) => {
