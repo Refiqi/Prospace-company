@@ -74,14 +74,15 @@ app.use('/office', express.static('public'));
 
 const exphbs = require('express-handlebars');
 const {
-    isEmpty
+    isEmpty, generateDate
 } = require('./helpers/handlebars-helpers');
 
 
 app.engine('handlebars', exphbs({
     defaultLayout: 'home',
     helpers: {
-        isEmpty: isEmpty
+        isEmpty: isEmpty,
+        generateDate: generateDate
     }
 }));
 app.set('view engine', 'handlebars');
