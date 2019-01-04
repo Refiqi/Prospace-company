@@ -37,16 +37,16 @@ Creating the routes for overview,company, and office. im doing the routes sepera
 
 - in the routes overview or the index page:
 
-        im implementing the layouts to be like home.handlebars in views/layouts so that all request be it GET or POST will render the home layouts.
-        im displaying dynamic data in companies db to be shown in the overview page with a mongoose function.
+im implementing the layouts to be like home.handlebars in views/layouts so that all request be it GET or POST will render the home layouts.
+im displaying dynamic data in companies db to be shown in the overview page with a mongoose function.
 
-- Company routes
+- Company routes:
 
-         I'm creating the POST routes for inserting the inputted data in forms to the database of course im validating the inputted data in the client-side too so that the revenue and the phone number should only accepts positive number. Creating the GET routes for displaying the company by its id that will take it to office page and it will display dynamic data with the Associated office if the company have office created. Creating DELETE routes by its id.
+I'm creating the POST routes for inserting the inputted data in forms to the database of course im validating the inputted data in the client-side too so that the revenue and the phone number should only accepts positive number. Creating the GET routes for displaying the company by its id that will take it to office page and it will display dynamic data with the Associated office if the company have office created. Creating DELETE routes by its id.
 
-- Office routes
+- Office routes:
 
-        I'm creating the POST routes for inserting the inputted data in forms to the database of course im validating the inputted data in the client-side too so that the Location latitude and longitude should only accepts positive number.Creating DELETE routes by its id.
+I'm creating the POST routes for inserting the inputted data in forms to the database of course im validating the inputted data in the client-side too so that the Location latitude and longitude should only accepts positive number.Creating DELETE routes by its id.
 
 
 ##### Helpers for handlebars
