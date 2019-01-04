@@ -3,7 +3,7 @@
         <div class="col-md-12 md-6">
             <div class="card-deck">
                 <div class="card">
-
+                    {{!-- Iterating Dynamic data --}}
                     <div class="card-body">
                         <h4 class="card-title">{{companies.name}}</a></h4>
                         <hr>
@@ -28,13 +28,14 @@
 
 <div class="container-card">
     <div class="row">
-
+{{!-- Checking if the data is empty or not --}}
     {{#isEmpty offices.length 0}}
         <div class="container" style="text-align:center">
             <h3>there is no office created yet, Please create a new Office</h3>
             <a href="/" class="btn btn-primary">Create Office</a>
         </div>
     {{else}}
+    {{!-- if it is empty it will iterate the data --}}
         {{#each offices}}
         <div class="col-md-6">
             <div class="card-deck">

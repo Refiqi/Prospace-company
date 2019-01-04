@@ -1,5 +1,12 @@
+// Initializing Mongoose
+
 const mongoose = require('mongoose');
+
+// Initializing Mongoose Schema
+
 const Schema = mongoose.Schema;
+
+// Creating The Schema
 
 const CompanySchema = new Schema({
 
@@ -25,5 +32,6 @@ const CompanySchema = new Schema({
 
 });
 
+// Exporting the model
 
 module.exports = mongoose.model('companies', CompanySchema);

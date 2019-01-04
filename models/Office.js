@@ -1,5 +1,12 @@
+// Initializing Mongoose
+
 const mongoose = require('mongoose');
+
+// Initializing Mongoose Schema
+
 const Schema = mongoose.Schema;
+
+// Creating The Schema
 
 const OfficeSchema = new Schema({
 
@@ -20,6 +27,8 @@ const OfficeSchema = new Schema({
         type: Date,
         required: true
     },
+
+    // Inserting Company Schema to office so that it can be related in database
     companies: {
         type: Schema.Types.ObjectId,
         ref: 'companies'
@@ -27,5 +36,6 @@ const OfficeSchema = new Schema({
 
 });
 
+// Exporting the model
 
 module.exports = mongoose.model('offices', OfficeSchema);

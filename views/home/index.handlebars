@@ -11,6 +11,8 @@
 
                         <div class="form-group">
 
+                        {{!-- the value function in input is so if there's error we will not get blank forms again --}}
+                           
                             <label for="companyName">Name:</label>
                             <input required value="{{companyName}}" type="text" name="companyName" id="companyName"
                                 class="form-control" placeholder="Enter Title">
@@ -25,7 +27,7 @@
 
                         <div class="form-group">
                             <label for="">Revenue:</label><br>
-                            <input required value="{{revenue}}" type="text" name="revenue" id="revenue" class="form-control"
+                            <input required value="{{revenue}}" type="number" name="revenue" id="revenue" class="form-control"
                                 placeholder="revenue">
                         </div>
 
@@ -61,12 +63,12 @@
                         <div class="form-row">
 
                             <div class="form-group col-md-6">
-                                <input required value="{{latitude}}" type="text" name="latitude" id="latitude" class="form-control"
+                                <input required value="{{latitude}}" type="number" name="latitude" id="latitude" class="form-control"
                                     placeholder="latitude">
                             </div>
 
                             <div class="form-group col-md-6">
-                                <input required value="{{longitude}}" type="text" name="longitude" id="longitude" class="form-control"
+                                <input required value="{{longitude}}" type="number" name="longitude" id="longitude" class="form-control"
                                     placeholder="longitude">
                             </div>
                         </div>
@@ -75,6 +77,8 @@
                             <label for="">Date:</label><br>
                             <input required value="{{date}}" type="date" name="date" id="date" class="form-control">
                         </div>
+
+                        {{!-- Selecting the Company for Office by it's id --}}
 
                         <div class="form-group">
                             <label for="">Company:</label><br>
@@ -99,12 +103,15 @@
     <h2>Companies</h2>
     <hr>
     <div class="row">
-
+{{!-- Checking the companies if there's none it will return this --}}
     {{#isEmpty companies.length 0}}
         <div class="container" style="text-align:center">
             <h3>there is no companies created yet, Please enter a new Company</h3>
         </div>
     {{else}}
+
+    {{!-- If the data exist then it will Iterating the data --}}
+
         {{#each companies}}
 
         <div class="col-md-6">

@@ -1,14 +1,28 @@
+// Initializing Express
+
 const express = require('express');
+
+// Initializing Router so that it can be called in app.js
+
 const router = express.Router();
+
+// Calling The models for Accessing Database
+
 const Company = require('../models/Company');
 const Office = require('../models/Office');
+
+// Making sure All the request will render the layouts home
 
 router.all('/*', (req, res, next) => {
     req.app.locals.layout = 'home';
     next();
 });
 
+// POST Request for Inserting data to database 
+
 router.post('/create', (req, res) => {
+
+    // Validating the Form
 
     let errors = [];
 
@@ -50,6 +64,8 @@ router.post('/create', (req, res) => {
 
         });
 
+        // Saving data to Database
+
         newCompany.save().then(savedCompany => {
             
             req.flash('success_message', `Company ${savedCompany.name} has been Created`);
@@ -60,6 +76,8 @@ router.post('/create', (req, res) => {
         });
     }
 });
+
+// Getting the data to the Company page
 
 router.get('/:id', (req, res) => {
 
@@ -85,6 +103,8 @@ router.get('/:id', (req, res) => {
                 });
         });
 });
+
+// DELETE data from it's id 
 
 router.delete('/:id', (req, res) => {
 

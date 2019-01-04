@@ -18,12 +18,22 @@ body {
 }
 
 .nameComp {
-  color: black; 
+  color: #214c84;
+  font-weight: bolder; 
 }
 
 .btn-holder {
   justify-content: flex-end;
   display: flex;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
 }
 
 @media (min-width: 992px) {
