@@ -24,12 +24,18 @@ router.post('/create', (req, res) => {
     }
 
     if (errors.length > 0) {
-        res.render('home/index', {
-            errors: errors,
-            companyName: req.body.companyName,
-            address: req.body.address,
-            revenue: req.body.revenue,
-            phone: req.body.phone
+
+        Company.find({}).then(companies=>{
+
+            res.render('home/index', {
+                errors: errors,
+                companyName: req.body.companyName,
+                address: req.body.address,
+                revenue: req.body.revenue,
+                phone: req.body.phone,
+                companies: companies
+            });
+
         });
     } else {
 

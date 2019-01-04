@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Office = require('../models/Office');
+const Company = require('../models/Company');
 
 
 router.all('/*', (req, res, next) => {
@@ -11,21 +12,33 @@ router.all('/*', (req, res, next) => {
 
 router.get('/create', (req, res) => {
 
-    if (req.body.latitude < 1){
-        
-        req.flash('errors_message', 'Please enter a positive number in Latitude');
+    let errors = [];
 
+    if (req.body.latitude < 1){
+        errors.push({
+            message: "Please enter a positive number in Latitude"
+        });
     }
     if (req.body.longitude < 1){
-        
-        req.flash('errors_message', 'Please enter a positive number in Longitude');
-
+        errors.push({
+            message: "Please enter a positive number in Longitude"
+        });
     }
 
-    if (req.flash.length > 0) {
-        
-        res.redirect('/');
-        
+    if (errors.length > 0) {
+
+        Company.find({}).then(companies=>{
+
+            res.render('home/index', {
+                errors: errors,
+                officeName: req.body.officeName,
+                latitude: req.body.latitude,
+                longitude: req.body.longitude,
+                date: req.body.date,
+                companies: companies
+            });
+
+        });
     } else {
 
     const newOffice = new Office({
