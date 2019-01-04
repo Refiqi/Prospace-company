@@ -21,19 +21,25 @@ router.get('/create', (req, res) => {
 
     });
 
-    newOffice.save();
+    newOffice.save().then(savedOffice=>{
 
-    Office.findOne(newOffice)
-    
-    .populate('companies')
-    .then(office => {
+        Office.findOne(savedOffice)
 
-        req.flash('success_message', `Office ${office.name} in ${office.companies.name} has been Created`);
-        res.redirect('/');
+        .populate('companies')
+        .then(office=>{
 
-    }).catch(err => {
+            req.flash('success_message', `Office ${office.name} in ${office.companies.name} has been Created`);
+            res.redirect('/');
+
+        }).catch(err=>{
+            if (err) throw err;
+        });
+
+    }).catch(err=>{
         if (err) throw err;
     });
+
+
 });
 
 router.delete('/:id', (req, res) => {

@@ -4,7 +4,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="deleteCompanyLabel">Are you Sure?</h5>
+            <h5 class="modal-title" id="deleteCompanyLabel">Are you sure you want to delete {{name}} Company?</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
@@ -12,6 +12,7 @@
           <div class="modal-body">Select "Delete" below if you really want to delete it.</div>
           <div class="modal-footer">
               <form action="/company/{{id}}?_method=DELETE" method="post">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal" aria-label="Close">Cancel</button>
                 <button class="btn btn-danger" type="submit">Delete</button>
               </form>
           </div>
@@ -27,7 +28,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="deleteOfficeLabel">Are you Sure?</h5>
+            <h5 class="modal-title" id="deleteOfficeLabel">Are you sure you want to delete {{name}} Office?</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
@@ -35,6 +36,7 @@
           <div class="modal-body">Select "Delete" below if you really want to delete it.</div>
           <div class="modal-footer">
               <form action="/office/{{id}}?_method=DELETE" method="post">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal" aria-label="Close">Cancel</button>
                 <button class="btn btn-danger" type="submit">Delete</button>
               </form>
           </div>
